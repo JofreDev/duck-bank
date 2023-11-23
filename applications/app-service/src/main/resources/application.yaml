@@ -1,0 +1,41 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "CustomerManagementService"
+  devtools:
+    add-properties: false
+  profiles:
+    include: null
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/admin"
+    username: "admin"
+    password: "admin"
+    driverClassName: "org.postgresql.Driver"
+  jpa:
+    databasePlatform: "org.hibernate.dialect.PostgreSQLDialect"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"
+commons:
+  jms:
+    input-concurrency: 10
+    input-queue: "DEV.QUEUE.2"
+    input-queue-alias: ""
+    reactive: true
+    output-concurrency: 10
+    output-queue: "DEV.QUEUE.1"
+    producer-ttl: 0
+    input-queue-set-queue-manager: true
+ibm:
+  mq:
+    channel: "DEV.APP.SVRCONN"
+    user: "app"
